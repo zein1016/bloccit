@@ -17,6 +17,16 @@ posts = Post.all
       body: Faker::Lorem.paragraph
       )
 end
+if !Post.find_by(title: "New Post")
+Post.create!(
+  title: "New Post",
+  body: "This is a new post"
+  )
+end
+unless Comment.find_by(body: "New Comment")
+  Comment.create!(
+    body: "New Comment")
+end
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
