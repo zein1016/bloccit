@@ -6,7 +6,7 @@
   <ul>
     <li>Make sure it is clear</li>
     <li>Make sure it is not answered before</li>
-    <li>
+    
   </ul>
   </div>
 
@@ -22,6 +22,10 @@
   </div>
     <div class="form-group">
     <%= q.submit "Save", class: 'btn btn-success' %>
+    </div>
+    <div class: "checkbox">
+      <%= label_tag :resolved, "Resolved?" %>    
+      <%= check_box_tag("name", "1", false, class: "checkbox") %>
     </div>
     <%end%>
   </div>
