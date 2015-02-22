@@ -24,8 +24,8 @@
     <%= q.submit "Save", class: 'btn btn-success' %>
     </div>
     <div class: "checkbox">
-      <%= label_tag :resolved, "Resolved?" %>    
-      <%= check_box_tag("name", "1", false, class: "checkbox") %>
+      <%= q.label :resolved %>
+      <%= q.check_box :resolved, class: "checkbox" %>
     </div>
     <%end%>
   </div>

@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
-    if @question.delete
+    if @question.destroy
 
       flash[:notice] = "Question was deleted"
       redirect_to :action => 'index'
