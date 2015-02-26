@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  skip_before_action :flash_attack, only: [:index, :new]
+  # skip_before_action :flash_attack, only: [:index, :new]
 
 
   def index
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post was saved"
       redirect_to @post
     else
-      flash[:error] = "There was an error saving the post. Please try again"
+      flash.now[:error] = "There was an error saving the post. Please try again"
       render :new
     end
   end
