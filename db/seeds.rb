@@ -45,7 +45,7 @@ posts = Post.all
 
 # Create Summaries
 
-18.times do 
+50.times do 
   Summary.create!(
     post:  posts.sample,
     title: Faker::Lorem.sentence,

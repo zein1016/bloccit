@@ -10,13 +10,13 @@ class SummariesController < ApplicationController
   def show
     @post = Post.find(params[:post_id])
     @summary = Summary.find(params[:id])
-    authorize @summary 
+    authorize @post 
   end
 
   def edit
     @post = Post.find(params[:post_id])
     @summary = Summary.find(params[:id])
-    authorize @summary
+    authorize @post
   end
 
   def create
@@ -25,14 +25,24 @@ class SummariesController < ApplicationController
     authorize @post 
     if @summary.save
       flash[:notice] = "Summary is saved"
-      redirect_to @summary
+      redirect_to [@post, @summary]
     else 
-      flash.now[:error] = "There was an error saving your topic. Please try again"
+      flash.now[:error] = "There was an error saving your summary. Please try again"
       render :new
     end
   end
 
   def update
+     @post = Post.find(params[:post_id])
+     @summary = Summary.find(params[:id])
+    authorize @post
+    if @summary.update_attributes(params.require(:summary).permit(:title, :body))
+      flash[:notice] = "Summary was saved"
+      redirect_to [@post, @summary]
+    else
+      flash.now[:error] = "There was an error saving your summary. Please try again."
+      render :edit
+    end
   end
 
 end
