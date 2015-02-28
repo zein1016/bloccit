@@ -1,5 +1,14 @@
 require 'faker'
 
+# Create Topics 
+15.times do
+  Topic.create!(
+    name:          Faker::Lorem.sentence,
+    description:   Faker::Lorem.paragraph  
+    )
+end 
+topics = Topic.all 
+
 
 # Create Users
 5.times do
@@ -25,6 +34,7 @@ users = User.all
 50.times do 
   Post.create!(
       user:    users.sample,
+      topic:   topics.sample,
     title:  Faker::Lorem.sentence,
     body:   Faker::Lorem.paragraph
     )
@@ -48,12 +58,34 @@ end
     )
 end
 
-user = User.first
-user.skip_confirmation!
-user.update_attributes!(
-  email: 'zein.khalifeh@gmail.com',
-  password: 'testingtesting'
+# Create an admin user
+admin = User.new(
+  name:        'Admin User',
+  email:       'zein.khalifeh@hotmail.com',
+  password:    'testingtesting',
+  role:        'admin'
   )
+admin.skip_confirmation!
+admin.save!
+
+# Create a moderator
+moderator = User.new(
+  name:        'Moderator User',
+  email:       'zein.khalifeh@insidejob.co',
+  password:    'testingtesting',
+  role:        'moderator'
+  )
+moderator.skip_confirmation!
+moderator.save!
+
+# Create a member
+member = User.new(
+  name:        'Member User',
+  email:       'zein.khalifeh@gmail.com',
+  password:    'testingtesting'
+  )
+member.skip_confirmation!
+member.save!
 
 
 puts "Seed finished"
