@@ -20,7 +20,8 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     
     @post = current_user.posts.build(post_params)
-    @post.topic = @topic 
+
+    @post.topic = @topic
     puts @post.inspect
     authorize @post
     if @post.save
