@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     authorize @posts
   end
 
+
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
@@ -17,12 +18,15 @@ class PostsController < ApplicationController
 
   def create 
     @topic = Topic.find(params[:topic_id])
+    
     @post = current_user.posts.build(post_params)
+    puts @post.inspect
     authorize @post
     if @post.save
       flash[:notice] = "Post was saved"
       redirect_to [@topic, @post]
     else
+     puts @post.inspect
       flash[:error] = "There was an error saving the post. Please try again"
       render :new
     end
