@@ -76,4 +76,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # https://zein-bloccit.herokuapp.com/
+  config.action_mailer.default_url_options = { host: 'https://zein-bloccit.herokuapp.com/'}
+
 end
