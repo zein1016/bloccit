@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   
 
   devise_for :users
+  resources :users, only: [:update]
+
   resources :advertisements
   resources :topics do
-    resources :posts, except: [:inde]
+    resources :posts, except: [:index]
   end
 
   get 'about' => 'welcome#about'
