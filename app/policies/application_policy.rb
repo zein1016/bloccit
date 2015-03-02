@@ -35,7 +35,11 @@ class ApplicationPolicy
   end
 
   def scope
+    # in TopicPolicy record is a Topic
+    # and record.class is the same as
+    # topic.class, which is Topic
     record.class
+    # Pundit.policy_scope!(user, record.class)
   end
 
   class Scope

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = policy_scope(Post)
     authorize @posts
   end
 
@@ -53,6 +53,7 @@ class PostsController < ApplicationController
   end
 
   private 
+
 
   def post_params
     params.require(:post).permit(:title, :body)
