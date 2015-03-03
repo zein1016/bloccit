@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
    validates :user, presence: true
    validates :topic, presence: true
    
+   mount_uploader :image, ImageUploader
 
 
 end
