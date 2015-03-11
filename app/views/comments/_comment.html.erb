@@ -1,0 +1,10 @@
+
+     
+     <%= comment.body %> 
+     <% if comment.user %>
+     <small> 
+      <em> <%= comment.user.name || comment.user.email %></em>
+      <em> <%= image_tag(comment.user.avatar.tiny.url) %></em>
+    </small>
+    <% end %>
+   <br/>

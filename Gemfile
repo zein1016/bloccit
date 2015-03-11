@@ -48,6 +48,8 @@ end
 group :development do
   gem "rails-erd"
   gem 'sqlite3'
+  gem 'binding_of_caller'
+  gem 'better_errors'
   
 end
 
