@@ -5,6 +5,10 @@
      <small> 
       <em> <%= comment.user.name || comment.user.email %></em>
       <em> <%= image_tag(comment.user.avatar.tiny.url) %></em>
+      <em> <%=comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago</em>
+      <% if policy(comment).destroy? %>
+      | <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
+      <% end %>
     </small>
     <% end %>
    <br/>
