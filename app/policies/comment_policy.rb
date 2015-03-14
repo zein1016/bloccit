@@ -4,4 +4,8 @@ class CommentPolicy < ApplicationPolicy
     user.present?
   end
   
+  def new?
+    create?
+  end
+
 end
