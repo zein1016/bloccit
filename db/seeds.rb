@@ -48,12 +48,32 @@ end
     )
 end
 
-user = User.first
-user.skip_confirmation!
-user.update_attributes!(
+admin = User.new
+admin.skip_confirmation!
+admin.update_attributes!(
+  email: 'zein@insidejob.co',
+  password: 'testingtesting'
+  )
+admin.update_attribute(:role, 'admin')
+admin.save
+
+moderator = User.new
+moderator.skip_confirmation!
+moderator.update_attributes!(
   email: 'zein.khalifeh@gmail.com',
   password: 'testingtesting'
   )
+moderator.update_attribute(:role, 'moderator')
+moderator.save
+
+user = User.new
+user.skip_confirmation!
+user.update_attributes!(
+  email: 'zein.khalifeh@hotmail.com',
+  password: 'testingtesting'
+  )
+user.save
+
 
 
 puts "Seed finished"

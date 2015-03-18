@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    # if !user_signed_in?
+    #   #raise Bloccit::NotAuthorizedError.new("foo")
+    # end
+    @posts = policy_scope(Post)
+    
     authorize @posts
   end
 
