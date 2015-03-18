@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
    @comment.user_id = current_user.id
     if @comment.save 
       flash[:notice] = "Comment was saved"
-      redirect_to topic_post_path
+      redirect_to topic_post_path(@post.topic, @post)
     else
       flash[:error] = "There was an error saving your comment. Please try again"
-      redirect_to topic_post_path
+      redirect_to topic_post_path(@post.topic, @post)
     end
 
   end 
@@ -23,10 +23,10 @@ class CommentsController < ApplicationController
     authorize @comment
      if @comment.destroy
        flash[:notice] = "Comment was removed."
-       redirect_to topic_post_path
+       redirect_to topic_post_path(@post.topic, @post)
      else
        flash[:error] = "Comment couldn't be deleted. Try again."
-       redirect_to topic_post_path
+       redirect_to topic_post_path(@post.topic, @post)
      end
    end
     
