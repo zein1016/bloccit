@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
       flash[:notice] = "Comment was saved"
       redirect_to [@topic, @post]
     else
-      flash[:error] = "There was an error saving your comment. Please try again"
+      error_messages = @comment.errors.full_messages.join(" ")
+      flash[:error] = "There was an error saving your comment.#{error_messages}. Please try again"
       redirect_to [@topic, @post]
     end
 
