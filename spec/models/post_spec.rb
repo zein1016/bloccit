@@ -1,11 +1,13 @@
-require 'rails_helper '
+require 'rails_helper'
 
 describe Post do 
   describe "vote method" do 
 
 
     before do 
-      @post = Post.create(title: 'post title', body: 'post body')
+      user = User.create
+      topic = Topic.create
+      @post = Post.create(title: 'post title', body: 'post bodies must be long', user: user, topic: topic)
       3.times { @post.votes.create(value: 1) }
       2.times { @post.votes.create(value: -1) }
     end
