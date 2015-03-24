@@ -69,6 +69,7 @@ class PostsController < ApplicationController
       render :show
     end
   end
+ 
 
   private 
 
