@@ -17,7 +17,9 @@ class Post < ActiveRecord::Base
     ActiveRecord::Base.transaction do 
       user.votes.create(value: 1, post: self)
     end
+  rescue ActiveRecord::RecordInvalid => exception
   end
+
   def up_votes
     votes.where(value: 1).count
   end
