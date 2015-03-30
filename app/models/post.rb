@@ -13,8 +13,12 @@ class Post < ActiveRecord::Base
    validates :topic, presence: true
    
   
-
-   def up_votes
+  def save_with_initial_vote
+    ActiveRecord::Base.transaction do 
+      user.votes.create(value: 1, post: self)
+    end
+  end
+  def up_votes
     votes.where(value: 1).count
   end
 
@@ -36,8 +40,8 @@ class Post < ActiveRecord::Base
   
   
 
-  def create_vote
-    user.votes.create(value: 1, post: self)
+  #def create_vote
+   # user.votes.create(value: 1, post: self)
     # user.votes.create(value: 1, post: self)
     # self.user.votes.create(value: 1, post: self)
     # votes.create(value: 1, user: user)
@@ -46,6 +50,6 @@ class Post < ActiveRecord::Base
     # vote = Vote.create(value: 1, user: user, post: self)
     # self.votes << vote
     # save
-  end
+ # end
 
 end
