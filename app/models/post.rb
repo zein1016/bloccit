@@ -14,10 +14,11 @@ class Post < ActiveRecord::Base
    
   
   def save_with_initial_vote
-    ActiveRecord::Base.transaction do 
-      user.votes.create(value: 1, post: self)
+    ActiveRecord::Base.transaction do
+      if save 
+        user.votes.create(value: 1, post: self)
+      end
     end
-  rescue ActiveRecord::RecordInvalid => exception
   end
 
   def up_votes
@@ -27,7 +28,6 @@ class Post < ActiveRecord::Base
   def down_votes
     votes.where(value: -1).count 
   end
-
 
   def points
     votes.sum(:value)
@@ -40,8 +40,6 @@ class Post < ActiveRecord::Base
     update_attribute(:rank, new_rank)
   end
   
-  
-
   #def create_vote
    # user.votes.create(value: 1, post: self)
     # user.votes.create(value: 1, post: self)
