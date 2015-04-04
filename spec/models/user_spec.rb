@@ -18,7 +18,7 @@ describe User do
     end
     it "returns the appropriate favorite if it exists" do
       favorite = Favorite.new(post: @post, user: @user)
-      @user.favorites.where(post: @post.id)
+      expect(@user.favorited(@post)).to eq(@user.favorites.where(post: @post.id).first)
     end
     it "returns `nil` if the user has favorited another post" do
       favorite = Favorite.new(post: @post_2, user: @user)
