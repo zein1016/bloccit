@@ -22,7 +22,7 @@ describe User do
     end
     it "returns `nil` if the user has favorited another post" do
       favorite = Favorite.create!(post: @post_2, user: @user)
-      expect(@user.favorited(@post_2)).to eq(favorite)
+      expect(@user.favorited(@post)).to eq(nil)
     end
   end
 end
