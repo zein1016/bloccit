@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
     favorites.where(post: post.id).first
   end
 
+  def voted(post)
+    votes.where(post: post.id).first
+  end
+
 end
