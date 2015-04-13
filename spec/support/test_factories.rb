@@ -20,15 +20,25 @@ module TestFactories
   user 
  end
 
- FactoryGirl.define do
+ #FactoryGirl.define do
+ # factory :user do
+   # email 'test@example.com'
+  #  password 'f4k3p455w0rd'
+  #  user = FactoryGirl.create(:user)
+  #  login_as(user, :scope => :user)
+    # if needed
+    # is_active true
+  #end
+#end
+  FactoryGirl.define do
   factory :user do
     email 'test@example.com'
     password 'f4k3p455w0rd'
-    user = FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+    
+   # user = FactoryGirl.create(:user)
+   # login_as(user, :scope => :user)
     # if needed
     # is_active true
   end
 end
-
 end 
