@@ -13,7 +13,9 @@ class Post < ActiveRecord::Base
    validates :user, presence: true
    validates :topic, presence: true
    
-  
+  # def self.visible_to(user)
+  #   user ? all : joins(:topic).where('topics.public' => true)
+  # end
 
    def up_votes
     votes.where(value: 1).count
