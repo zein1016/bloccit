@@ -1,4 +1,4 @@
- FactoryGirl.define do
+FactoryGirl.define do
    factory :user do
      name "Douglas Adams"
      sequence(:email, 100) { |n| "person#{n}@example.com" }
@@ -6,4 +6,9 @@
      password_confirmation "helloworld"
      confirmed_at Time.now
    end
+ end
+
+
+ def user_with_post_and_comment 
+  
  end
