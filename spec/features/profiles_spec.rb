@@ -29,6 +29,7 @@ describe "Visiting profiles" do
   describe "user visiting own profile" do 
     
     it "shows profile" do 
+      comment_without_email
       login_as(@user, :scope => :user)
       visit user_path(@user)
 

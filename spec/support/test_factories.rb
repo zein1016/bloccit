@@ -17,5 +17,12 @@ module TestFactories
   user.save
   user 
  end
+
+
+ def comment_without_email
+  @user.update_attribute(:email_favorites, false)
+  @comment = Comment.new(user: @user, post: @post, body:"A comment")
+  @comment.save
+ end
   
 end 
