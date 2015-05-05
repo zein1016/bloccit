@@ -7,7 +7,7 @@ describe User do
    before do 
      @post = create(:post)
      @post_2 = create(:post)
-     @user = create(:user)
+     @user = create(:user_with_post_and_comment)
      end
     
 
