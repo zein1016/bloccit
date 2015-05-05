@@ -8,9 +8,9 @@ describe "Visiting profiles" do
   before do 
     @user = authenticated_user
     @post = associated_post(user: @user)
-    @comment = Comment.new(user: @user, post: @post, body:"A comment")
-    allow(@comment).to receive(:send_favorite_emails)
-    @comment.save
+    @comment = comment_without_email(@user, @post)
+    #allow(@comment).to receive(:send_favorite_emails)
+    #@comment.save
   end
 
   describe "not signed in" do
@@ -29,7 +29,7 @@ describe "Visiting profiles" do
   describe "user visiting own profile" do 
     
     it "shows profile" do 
-      comment_without_email
+      
       login_as(@user, :scope => :user)
       visit user_path(@user)
 

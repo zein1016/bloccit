@@ -19,10 +19,11 @@ module TestFactories
  end
 
 
- def comment_without_email
-  @user.update_attribute(:email_favorites, false)
-  @comment = Comment.new(user: @user, post: @post, body:"A comment")
-  @comment.save
+ def comment_without_email(user, post)
+  comment = Comment.new(user: @user, post: @post, body:"A comment")
+  allow(comment).to receive(:send_favorite_emails)
+  comment.save
+  comment 
  end
   
 end 
