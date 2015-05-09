@@ -30,12 +30,12 @@
   </div>
 </div>
   <h4>Comments</h4>
+  <div class='js-comments'>
   <%= render partial: 'comments/comment', collection: @comments %>
-
- <div class="row">
-  <div class="col-md-8">
-    <%= render 'comments/form', topic: @topic, comment: @comment, post: @post %>
-  </div>
+ </div>
+    <div class='new-comment'>
+  <%= render 'comments/form' %>
+ </div>
 </div>
 
 

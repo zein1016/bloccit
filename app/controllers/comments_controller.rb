@@ -4,12 +4,18 @@ class CommentsController < ApplicationController
    @post = Post.find(params[:post_id])
    @comment = @post.comments.new(comment_params)
    @comment.user_id = current_user.id
+   @new_comment = Comment.new
     if @comment.save 
       flash[:notice] = "Comment was saved"
-      redirect_to [@post.topic, @post]
+      
     else
       flash[:error] = "There was an error saving your comment. Please try again"
-      redirect_to [@post.topic, @post]
+      
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 
   end 
